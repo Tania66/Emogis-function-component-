@@ -6,7 +6,7 @@ import ResultText from "./components/ResultText/ResultText";
 function App() {
   const [emogi, setEmogi] = useState(
     () =>
-      JSON.parse(window.localStorage.getItem("bestEmogi")) ?? [
+      JSON.parse(localStorage.getItem("bestEmogi")) || [
         { id: "id-1", smile: "😂", voice: 0 },
         { id: "id-2", smile: "🥰", voice: 0 },
         { id: "id-3", smile: "😡", voice: 0 },
@@ -18,7 +18,7 @@ function App() {
   const [isShow, setIsShow] = useState(false);
 
   useEffect(() => {
-    window.localStorage.setItem("bestEmogi", JSON.stringify(emogi));
+    localStorage.setItem("bestEmogi", JSON.stringify(emogi));
   }, [emogi]);
 
   function handleClickVoice(id) {
